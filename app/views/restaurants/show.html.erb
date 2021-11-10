@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Stars:</strong>
+  <%= @restaurant.stars %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %> |
+<%= link_to 'Add review', new_restaurant_review_path(@restaurant) %>
+
+<h3 class="my-3">Reviews</h3>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+  <li class="list-group-item">
+    <%= review.content %>
+    <%= link_to 'Delete', review_path(review),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+  </li>
+  <% end %>
+</ul>
